@@ -1,11 +1,29 @@
-
-
+/* 0    nose
+1    leftEye
+2    rightEye
+3    leftEar
+4    rightEar
+5    leftShoulder
+6    rightShoulder
+7    leftElbow
+8    rightElbow
+9    leftWrist
+10    rightWrist
+11    leftHip
+12    rightHip
+13    leftKnee
+14    rightKnee
+15    leftAnkle
+16    rightAnkle
+*/
+var script= []; //empty array that everything is going to be pushed to 
 // Grab elements, create settings, etc.
 var video = document.getElementById("video");
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 // The detected positions will be inside an array
 let poses = [];
+let critcism = [];
 
 
 // Create a webcam capture
@@ -39,10 +57,52 @@ poseNet.on("pose", gotPoses);
 
 // A function that gets called every time there's an update from the model
 function gotPoses(results) {
+  //console.log(poses);
   poses = results;
   if(poses.length> 0){
     noseX = poses[0].pose.keypoints[0].position.x;
     noseY = poses[0].pose.keypoints[0].position.y;
+    leftwristX = poses[0].pose.keypoints[9].position.x;
+    rightwristX = poses[0].pose.keypoints[10].position.x;
+  }
+  //rightwristX critcism
+  if (rightwristX > 200) {
+    var critcism1 = "move your right wrist to the right";
+    critcism.push(critcism1);
+    document.getElementById("blah").innerHTML = critcism[0];
+  }
+
+  else if(rightwristX < 150) {
+    var critcism2 = "move your right wrist to the left";
+    critcism.push(critcism2);
+    document.getElementById("blah").innerHTML = critcism[1];
+  }
+
+  else {
+    var critcism3 = "perfect.";
+    critcism.push(critcism3);
+    document.getElementById("blah").innerHTML = critcism[2];
+    console.log(rightwristX);
+  }
+
+  //leftwristX critcism
+   if (leftwristX > 400) {
+    var critcism4 = "move your right wrist to the right";
+    critcism.push(critcism4);
+    document.getElementById("blah1").innerHTML = critcism[3];
+  }
+
+  else if(leftwristX < 250) {
+    var critcism5 = "move your right wrist to the left";
+    critcism.push(critcism5);
+    document.getElementById("blah1").innerHTML = critcism[4];
+  }
+
+  else {
+    var critcism6 = "perfect.";
+    critcism.push(critcism6);
+    document.getElementById("blah1").innerHTML = critcism[5];
+    console.log(rightwristX);
   }
 }
 
@@ -83,4 +143,3 @@ function drawSkeleton() {
     }
   }
 }
-

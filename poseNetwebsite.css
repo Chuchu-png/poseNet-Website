@@ -1,0 +1,30 @@
+
+p {
+    color: black ;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+}
+
+button {
+    font-family: 'Quicksand', sans-serif;
+    position: relative;
+    top: 95%;
+    left: 48%;
+}
+
+canvas {
+    position: relative;
+    left: 24%;
+    -moz-transform: scale(-1, 1);
+-webkit-transform: scale(-1, 1);
+-o-transform: scale(-1, 1);
+transform: scale(-1, 1);
+filter: FlipH;
+}
+
+div {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
