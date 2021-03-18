@@ -16,6 +16,9 @@
 15    leftAnkle
 16    rightAnkle
 */
+
+
+
 var script= []; //empty array that everything is going to be pushed to 
 // Grab elements, create settings, etc.
 var video = document.getElementById("video");
@@ -57,54 +60,38 @@ poseNet.on("pose", gotPoses);
 
 // A function that gets called every time there's an update from the model
 function gotPoses(results) {
-  //console.log(poses);
-  poses = results;
+
+poses = results;
   if(poses.length> 0){
-    noseX = poses[0].pose.keypoints[0].position.x;
-    noseY = poses[0].pose.keypoints[0].position.y;
-    leftwristX = poses[0].pose.keypoints[9].position.x;
-    rightwristX = poses[0].pose.keypoints[10].position.x;
-  }
-  //rightwristX critcism
+  var rightwristX = poses[0].pose.keypoints[10].position.x;
+  var leftwristX = poses[0].pose.keypoints[9].position.x;
+
+   //rightwristX critcism
   if (rightwristX > 200) {
-    var critcism1 = "move your right wrist to the right";
-    critcism.push(critcism1);
-    document.getElementById("blah").innerHTML = critcism[0];
-  }
-
-  else if(rightwristX < 150) {
-    var critcism2 = "move your right wrist to the left";
-    critcism.push(critcism2);
-    document.getElementById("blah").innerHTML = critcism[1];
+  console.log("move to right wrist to the right"); 
+   var critcism1 = "move your right wrist to the right";
+    /*critcism.push(critcism1);
+    document.getElementById("blah").innerHTML = critcism[0];*/
   }
 
   else {
-    var critcism3 = "perfect.";
-    critcism.push(critcism3);
-    document.getElementById("blah").innerHTML = critcism[2];
-    console.log(rightwristX);
+        console.log("great!");
   }
 
-  //leftwristX critcism
-   if (leftwristX > 400) {
-    var critcism4 = "move your right wrist to the right";
-    critcism.push(critcism4);
-    document.getElementById("blah1").innerHTML = critcism[3];
+  if (leftwristX > 300) {
+        console.log("move your left wrist to the right");
   }
-
-  else if(leftwristX < 250) {
-    var critcism5 = "move your right wrist to the left";
-    critcism.push(critcism5);
-    document.getElementById("blah1").innerHTML = critcism[4];
+  
+  else if(leftwristX < 50) {
+        console.log("move your left wrist to the left");
   }
 
   else {
-    var critcism6 = "perfect.";
-    critcism.push(critcism6);
-    document.getElementById("blah1").innerHTML = critcism[5];
-    console.log(rightwristX);
-  }
+        console.log("great!");
+        }
+    }
 }
+
 
 function modelReady() {
   console.log("model ready");
