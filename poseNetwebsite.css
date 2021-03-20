@@ -1,25 +1,54 @@
 
 p {
-    color: black ;
+    color: white;
     text-align: center;
     font-family: 'Quicksand', sans-serif;
+    position: absolute;
+    top: 13%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    font-size: 50px;
+    z-index:1;
 }
 
 button {
     font-family: 'Quicksand', sans-serif;
-    position: relative;
-    top: 95%;
-    left: 48%;
+    position: absolute;
+    top: 89%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    z-index:1;
+    border-radius: 0px;
+    border: 1.5px solid white;
+    background-color: rgba(96, 96, 96, 0.4);
+    font-size: 20px;
+    color:white;
 }
 
+button:active {
+    position: absolute;
+}
+
+
+
+
 canvas {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    margin:auto;
+    /*
     position: relative;
     left: 24%;
     -moz-transform: scale(-1, 1);
--webkit-transform: scale(-1, 1);
--o-transform: scale(-1, 1);
-transform: scale(-1, 1);
-filter: FlipH;
+    -webkit-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+    */
+    filter: FlipH;
 }
 
 div {
@@ -27,4 +56,49 @@ div {
     width: 100px;
     height: 100px;
     background-color: red;
+}
+
+
+body {
+    position:relative;
+    background: url("forest.jpg");
+    background-size: cover;
+    z-index: -2;
+}
+
+#frosted {
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5); 
+    background-color: rgba(255, 255, 255, .15);
+    filter: blur(10);
+
+}
+
+#blah {
+    position: absolute;
+    z-index: 1;
+    height: 10%;
+    width: 12%;
+    top: 36%;
+    left: 80%;
+    background-color: rgba(114, 136, 136, 0.8);
+    font-size: 20px;
+    color: white;
+    padding: 3%;
+}
+
+#blah2 {
+    position: absolute;
+    z-index: 1;
+    height: 10%;
+    width: 12%;
+    top: 63.5%;
+    left: 80%;
+    background-color: rgba(114, 136, 136, 0.8);
+    font-size: 20px;
+    color: white;
+    padding: 3%;
 }
